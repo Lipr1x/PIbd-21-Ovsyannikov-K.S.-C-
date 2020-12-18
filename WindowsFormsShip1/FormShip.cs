@@ -12,15 +12,19 @@ namespace WindowsFormsTruck
 {
     public partial class FormShip : Form
     {
-
-        private WarShip ship;
+        private ITransport ship;
 
         public FormShip()
         {
             InitializeComponent();
         }
 
-        private void Draw()
+        public void SetCar(ITransport ship)
+        {
+            this.ship = ship;
+            Draw();
+        }
+            private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
             Graphics gr = Graphics.FromImage(bmp);
@@ -36,6 +40,13 @@ namespace WindowsFormsTruck
             Draw();
         }
 
+        private void buttonCreateShip_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            ship = new Ship(rnd.Next(100, 300), rnd.Next(1000, 3000), Color.Black);
+            ship.SetPosition(rnd.Next(10, 60), rnd.Next(100, 400), pictureBoxShip.Width, pictureBoxShip.Height);
+            Draw();
+        }
 
         private void buttonMove_Click(object sender, EventArgs e)
         {

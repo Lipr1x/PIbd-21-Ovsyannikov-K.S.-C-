@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsTruck
 {
-    public abstract class Vehicle 
+    public abstract class Vehicle : ITransport
     {
 
         protected float _startPosX;
 
         protected float _startPosY;
- 
+
         protected int _pictureWidth;
 
         protected int _pictureHeight;
@@ -21,7 +21,7 @@ namespace WindowsFormsTruck
         public int MaxSpeed { protected set; get; }
 
         public float Weight { protected set; get; }
-
+ 
         public Color MainColor { protected set; get; }
 
         public void SetPosition(int x, int y, int width, int height)
